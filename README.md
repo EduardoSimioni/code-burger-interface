@@ -20,4 +20,5 @@ In the part of the admin screen, the MUI library was used to use the icons and c
 
 Tela de Admin:
 Admin screen:
+
 ![apresentação_admin_gif](https://user-images.githubusercontent.com/88170288/156865212-f2dd9f3c-0c6e-4c5b-bc85-f2688746d31a.gif)
