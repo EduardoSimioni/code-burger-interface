@@ -4,7 +4,7 @@ Para a criação da interface foi utilizado: React, styled-components, react-toa
 
 Na criação da API foi utilizado Express, JWT, yup, a biblioteca uuid, e o Sequelize e Mongoose para fazer a conexão com os bancos de dados que são o Postgres e MongoDB.
 
-Na parte da tela do adminstrador, foi utilizado a biblioteca MUI para o uso dos ícones e criação das tabelas
+Na parte da tela do administrador , foi utilizado a biblioteca MUI para o uso dos ícones e criação das tabelas
 
 
 Complete application of a hamburger shop.
