@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  background-color: #ffffff;
+  background-color: ${props => props.theme.background1};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -33,7 +33,7 @@ export const ContainerItems = styled.div`
   flex-direction: column;
 
   p {
-    color: #424242;
+    color: ${props => props.theme.textColorOffer};
     font-size: 18px;
     font-style: normal;
     font-weight: bold;

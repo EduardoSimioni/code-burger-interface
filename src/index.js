@@ -11,7 +11,12 @@ ReactDOM.render(
     <AppProvider>
       <Routes />
     </AppProvider>
-    <ToastContainer autoClose={2000} theme="colored" />
+    <ToastContainer
+      closeOnClick={false}
+      theme="light"
+      autoClose={2000}
+      pauseOnFocusLoss={false}
+    />
     <GlobalStyles />
   </>,
   document.getElementById('root')

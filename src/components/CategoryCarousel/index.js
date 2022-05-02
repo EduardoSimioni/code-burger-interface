@@ -1,11 +1,12 @@
+import PropTypes from 'prop-types'
 import React, { useEffect, useState } from 'react'
 import Carousel from 'react-elastic-carousel'
 
-import Category from '../../assets/category.png'
+import Category from '../../assets/category-bg.png'
 import api from '../../services/api'
 import { Container, ContainerItems, Image, Button, CategoryImg } from './styles'
 
-export function CategoryCarousel() {
+export function CategoryCarousel({ theme }) {
   const [categories, setCategories] = useState([])
   useEffect(() => {
     async function loadCategories() {
@@ -24,7 +25,7 @@ export function CategoryCarousel() {
   ]
 
   return (
-    <Container>
+    <Container theme={theme}>
       <CategoryImg src={Category} alt="logo-da-categoria" />
 
       <Carousel
@@ -49,4 +50,8 @@ export function CategoryCarousel() {
       </Carousel>
     </Container>
   )
+}
+
+CategoryCarousel.propTypes = {
+  theme: PropTypes.string
 }

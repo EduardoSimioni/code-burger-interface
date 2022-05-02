@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React, { useState, useEffect } from 'react'
 import { toast } from 'react-toastify'
 
@@ -7,7 +8,7 @@ import formatCurrency from '../../utils/formatCurrency'
 import { Button } from '../Button'
 import { Container } from './styles'
 
-export function CartResume() {
+export function CartResume({ theme }) {
   const [finalPrice, setFinalPrice] = useState(0)
   const [deliveryTax] = useState(5)
 
@@ -25,16 +26,20 @@ export function CartResume() {
     const order = cartProducts.map(product => {
       return { id: product.id, quantity: product.quantity }
     })
-    await toast.promise(api.post('orders', { products: order }), {
-      pending: 'Realizando o seu pedido...',
-      success: 'Pedido realizado com sucesso',
-      error: 'Falha ao tentar realizar o seu pedido, tente novamente'
-    })
+    await toast.promise(
+      api.post('orders', { products: order }),
+      {
+        pending: 'Realizando o seu pedido...',
+        success: 'Pedido realizado com sucesso',
+        error: 'Falha ao tentar realizar o seu pedido, tente novamente'
+      },
+      { autoClose: true }
+    )
   }
 
   return (
     <div>
-      <Container>
+      <Container theme={theme}>
         <div className="container-top">
           <h2 className="title">Resumo do pedido</h2>
           <p className="items">Itens</p>
@@ -52,4 +57,7 @@ export function CartResume() {
       </Button>
     </div>
   )
+}
+CartResume.propTypes = {
+  theme: PropTypes.string
 }

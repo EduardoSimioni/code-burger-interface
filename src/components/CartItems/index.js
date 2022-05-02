@@ -1,13 +1,14 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 
 import { useCart } from '../../hooks/CartContext'
 import formatCurrency from '../../utils/formatCurrency'
 import { Container, Header, Body, EmptyCart } from './styles'
 
-export function CartItems() {
+export function CartItems({ theme }) {
   const { cartProducts, increaseProducts, decreaseProducts } = useCart()
   return (
-    <Container>
+    <Container theme={theme}>
       <Header>
         <p></p>
         <p>Itens</p>
@@ -36,4 +37,8 @@ export function CartItems() {
       )}
     </Container>
   )
+}
+
+CartItems.propTypes = {
+  theme: PropTypes.string
 }

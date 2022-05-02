@@ -3,8 +3,11 @@ import React from 'react'
 
 import { SideMenuAdmin } from '../../components'
 import paths from '../../constants/paths'
+import EditCategory from './EditCategory'
 import EditProduct from './EditProduct'
+import ListCategories from './ListCategories'
 import ListProducts from './ListProducts'
+import NewCategory from './NewCategory'
 import NewProduct from './NewProduct'
 import Orders from './Orders'
 import { Container, ContainerItems } from './styles'
@@ -18,6 +21,9 @@ export function Admin({ match: { path } }) {
         {path === paths.Products && <ListProducts />}
         {path === paths.NewProduct && <NewProduct />}
         {path === paths.EditProduct && <EditProduct />}
+        {path === paths.Categories && <ListCategories />}
+        {path === paths.NewCategory && <NewCategory />}
+        {path === paths.EditCategory && <EditCategory />}
       </ContainerItems>
     </Container>
   )

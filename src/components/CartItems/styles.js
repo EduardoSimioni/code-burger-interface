@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  background: #ffffff;
+  background: ${props => props.theme.cartProductBackground};
   box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.03);
   border-radius: 20px;
   padding: 10px;
@@ -34,7 +34,7 @@ export const Body = styled.div`
 
   p {
     font-size: 16px;
-    color: #000000;
+    color: ${props => props.theme.cartLetter};
   }
 
   .quantity-container {
@@ -47,6 +47,7 @@ export const Body = styled.div`
       border: none;
       font-size: 24px;
       cursor: pointer;
+      color: ${props => props.theme.cartLetter};
     }
 
     p {

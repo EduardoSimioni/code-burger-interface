@@ -15,8 +15,7 @@ import {
   Input,
   ButtonStyles,
   LabelUpload,
-  ContainerInput,
-  DeleteButton
+  ContainerInput
 } from './styles'
 
 function EditProduct() {
@@ -47,7 +46,7 @@ function EditProduct() {
 
   const onSubmit = async data => {
     const productDataFormData = new FormData()
-    console.log(product)
+
     productDataFormData.append('name', data.name)
     productDataFormData.append('price', data.price)
     productDataFormData.append('category_id', data.category.id)
@@ -76,14 +75,6 @@ function EditProduct() {
     }
     loadCategories()
   }, [])
-
-  // async function deleteUser(userId) {
-  //   await api.delete(`http://localhost:3001/users/${userId}`)
-
-  //   const newUsers = users.filter(user => user.id !== userId)
-
-  //   setUsers(newUsers)
-  // }
 
   return (
     <Container>
@@ -160,7 +151,6 @@ function EditProduct() {
           <Label>Produto em oferta?</Label>
         </ContainerInput>
         <ButtonStyles>Editar Produto</ButtonStyles>
-        {/* <DeleteButton onClick={()}>Deletar Produto</DeleteButton> */}
       </form>
     </Container>
   )

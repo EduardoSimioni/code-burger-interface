@@ -1,10 +1,18 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  background-color: #ffffff;
+  background-color: ${props => props.theme.cartProductBackground};
   padding: 15px;
   border-radius: 10px;
   box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.3);
+
+  p {
+    color: ${props => props.theme.cartLetter};
+  }
+
+  h2 {
+    color: ${props => props.theme.cartLetter};
+  }
 
   .container-top {
     display: grid;

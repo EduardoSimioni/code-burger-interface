@@ -1,5 +1,3 @@
-import CancelIcon from '@mui/icons-material/Cancel'
-import CheckBoxIcon from '@mui/icons-material/CheckBox'
 import Paper from '@mui/material/Paper'
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
@@ -12,38 +10,30 @@ import { useHistory } from 'react-router-dom'
 
 import paths from '../../../constants/paths'
 import api from '../../../services/api'
-import formatCurrency from '../../../utils/formatCurrency'
 import { Container, Img, EditButton, DeleteButton } from './styles'
 
-function ListProducts() {
-  const [products, setProducts] = useState()
+function ListCategories() {
+  const [category, setCategories] = useState()
   const { push } = useHistory()
 
   useEffect(() => {
-    async function loadOrders() {
-      const { data } = await api.get('products')
-      setProducts(data)
+    async function loadCategories() {
+      const { data } = await api.get('categories')
+      setCategories(data)
     }
 
-    loadOrders()
+    loadCategories()
   }, [])
 
-  function isOffer(offerStatus) {
-    if (offerStatus) {
-      return <CheckBoxIcon style={{ color: '#228b22' }} />
-    }
-    return <CancelIcon style={{ color: '#cc1717' }} />
+  function editCategory(category) {
+    push(paths.EditCategory, { category })
   }
 
-  function editProduct(product) {
-    push(paths.EditProduct, { product })
-  }
+  async function deleteCategory(category) {
+    await api.delete(`/categories/${category.id}`)
+    const { data } = await api.get('categories')
 
-  async function deleteProduct(product) {
-    await api.delete(`/products/${product.id}`)
-    const { data } = await api.get('products')
-
-    setProducts(data)
+    setCategories(data)
   }
 
   return (
@@ -53,30 +43,28 @@ function ListProducts() {
           <TableHead>
             <TableRow>
               <TableCell>Nome</TableCell>
-              <TableCell>Preço</TableCell>
-              <TableCell align="center">Produto em oferta</TableCell>
-              <TableCell align="center"> Imagem do produto</TableCell>
+              <TableCell align="center">ID da categoria</TableCell>
+              <TableCell align="center"> Imagem da categoria</TableCell>
               <TableCell align="center">Editar produto</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {products &&
-              products.map(product => (
+            {category &&
+              category.map(category => (
                 <TableRow
-                  key={product.id}
+                  key={category.id}
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">
-                    {product.name}
+                    {category.name}
                   </TableCell>
-                  <TableCell>{formatCurrency(product.price)}</TableCell>
-                  <TableCell align="center">{isOffer(product.offer)}</TableCell>
+                  <TableCell align="center">{category.id}</TableCell>
                   <TableCell align="center">
-                    <Img src={product.url} alt="imagem-produto" />
+                    <Img src={category.url} alt="imagem-produto" />
                   </TableCell>
                   <TableCell align="center">
-                    <EditButton onClick={() => editProduct(product)} />
-                    <DeleteButton onClick={() => deleteProduct(product)} />
+                    <EditButton onClick={() => editCategory(category)} />
+                    <DeleteButton onClick={() => deleteCategory(category)} />
                   </TableCell>
                 </TableRow>
               ))}
@@ -87,4 +75,4 @@ function ListProducts() {
   )
 }
 
-export default ListProducts
+export default ListCategories

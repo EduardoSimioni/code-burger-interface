@@ -1,14 +1,15 @@
+import PropTypes from 'prop-types'
 import React, { useEffect, useState } from 'react'
 import Carousel from 'react-elastic-carousel'
 import { useHistory } from 'react-router-dom'
 
-import Offers from '../../assets/offers.png'
+import Offers from '../../assets/offers-bg.png'
 import { useCart } from '../../hooks/CartContext'
 import api from '../../services/api'
 import formatCurrency from '../../utils/formatCurrency'
 import { Container, ContainerItems, Image, Button, CategoryImg } from './styles'
 
-export function OffersCarousel() {
+export function OffersCarousel({ theme }) {
   const [offers, setOffers] = useState([])
   const { putProductInCart } = useCart()
   const { push } = useHistory()
@@ -37,7 +38,7 @@ export function OffersCarousel() {
   ]
 
   return (
-    <Container>
+    <Container theme={theme}>
       <CategoryImg src={Offers} alt="logo-da-oferta" />
 
       <Carousel
@@ -64,4 +65,8 @@ export function OffersCarousel() {
       </Carousel>
     </Container>
   )
+}
+
+OffersCarousel.propTypes = {
+  theme: PropTypes.string
 }

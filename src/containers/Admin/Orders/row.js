@@ -14,7 +14,7 @@ import React from 'react'
 
 import api from '../../../services/api'
 import status from './order-status'
-import { ProductsImg, Container, ReactSelectStyle } from './styles'
+import { ProductsImg, ReactSelectStyle, DeleteButton } from './styles'
 
 function Row({ row, setOrders, orders }) {
   const [open, setOpen] = React.useState(false)
@@ -34,6 +34,12 @@ function Row({ row, setOrders, orders }) {
     } finally {
       setIsLoading(false)
     }
+  }
+
+  async function deleteProduct(ord) {
+    await api.delete(`/orders/${ord}`)
+    const { data } = await api.get('orders')
+    setOrders(data)
   }
 
   return (
@@ -66,6 +72,9 @@ function Row({ row, setOrders, orders }) {
             }}
             isLoading={isLoading}
           />
+        </TableCell>
+        <TableCell>
+          <DeleteButton onClick={() => deleteProduct(row.orderId)} />
         </TableCell>
       </TableRow>
       <TableRow>

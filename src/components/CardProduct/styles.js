@@ -6,7 +6,7 @@ export const Image = styled.img`
 `
 
 export const Container = styled.div`
-  background: #ffffff;
+  background: ${props => props.theme.cardProductColor};
   box-shadow: 0px 30px 60px rgba(57, 57, 57, 0.1);
   border-radius: 30px;
   display: flex;

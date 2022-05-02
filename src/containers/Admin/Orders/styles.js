@@ -1,3 +1,4 @@
+import DeleteIcon from '@mui/icons-material/Delete'
 import ReactSelect from 'react-select'
 import styled from 'styled-components'
 
@@ -32,7 +33,8 @@ export const LinkMenu = styled.a`
   padding-bottom: 5px;
 `
 
-export const MidBox = styled.div``
-export const ContainerItems6 = styled.div``
-export const ContainerItems7 = styled.div``
-export const ContainerItems8 = styled.div``
+export const DeleteButton = styled(DeleteIcon)`
+  cursor: pointer;
+  color: #323d5d;
+`
+//  margin-left: 20px;
